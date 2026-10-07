@@ -1,0 +1,20 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 1rem;
+  background: url('/path/to/your/image.jpg') no-repeat center center/cover;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: red;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: red;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
