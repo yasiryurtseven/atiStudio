@@ -1,10 +1,12 @@
+
 import { useEffect, useState } from "react";
 import css from "./Navbar.module.css";
+import Logo from "../../assets/Varlık 2-96.svg";
 
 const navItems = [
-  { id: "about", label: "Biz Kimiz?" },
+  { id: "ourjobs", label: "İş Birliklerimiz" },
   { id: "skills", label: "Ne İstersiniz?" },
-  { id: "ourJobs", label: "İş Birliklerimiz" },
+  { id: "about", label: "Biz Kimiz?" },
   { id: "contact", label: "İletişim" },
 ];
 
@@ -12,67 +14,101 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
-  useEffect(() => {
-    const sections = navItems
-      .map((item) => document.getElementById(item.id))
-      .filter(Boolean);
+ useEffect(() => {
+  const sectionIds = ["hero", ...navItems.map((item) => item.id)];
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSection = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  const sections = sectionIds
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
 
-        if (visibleSection) {
-          setActiveSection(visibleSection.target.id);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "-30% 0px -50% 0px",
-        threshold: [0.1, 0.25, 0.5],
+  const observer = new IntersectionObserver(
+  (entries) => {
+    const visibleSections = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort(
+        (a, b) => b.intersectionRatio - a.intersectionRatio
+      );
+
+    if (visibleSections.length > 0) {
+      const sectionId = visibleSections[0].target.id;
+
+      setActiveSection(sectionId);
+
+      if (sectionId === "hero") {
+        window.history.replaceState(null, "", window.location.pathname);
+      } else if (window.location.hash !== `#${sectionId}`) {
+        window.history.replaceState(null, "", `#${sectionId}`);
       }
-    );
+    }
+  },
+  {
+    root: null,
+    rootMargin: "-20% 0px -60% 0px",
+    threshold: [0.1, 0.25, 0.5],
+  }
+);
 
-    sections.forEach((section) => observer.observe(section));
+  sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
-  }, []);
+  return () => observer.disconnect();
+}, []);
 
-  const handleLinkClick = () => {
-    setIsOpen(false);
-  };
+ const handleLinkClick = () => {
+  setIsOpen(false);
+};
 
   return (
-    <header className={css.navbar}>
-      <a href="#hero" className={css.logo}>
-        Portfolyo
-      </a>
+    <>
+      {/* Mobil menü açıkken dışarı tıklamayı yakalar */}
+      {isOpen && (
+        <div
+          className={css.menuOverlay}
+          onClick={() => setIsOpen(false)}
+        />
+      )}
 
-      <nav className={`${css.navLinks} ${isOpen ? css.active : ""}`}>
-        {navItems.map((item) => (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            onClick={handleLinkClick}
-            className={activeSection === item.id ? css.activeLink : ""}
-          >
-            {item.label}
-          </a>
-        ))}
-      </nav>
+      <header className={css.navbar}>
+        <a href="#hero" className={css.logo}>
+          <img src={Logo} alt="Logo" className={css.logo} />
+        </a>
 
-      <button
-        className={`${css.hamburger} ${isOpen ? css.open : ""}`}
-        onClick={() => setIsOpen((prev) => !prev)}
-        aria-label={isOpen ? "Menüyü kapat" : "Menüyü aç"}
-        aria-expanded={isOpen}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
-    </header>
+        <nav
+          className={`${css.navLinks} ${
+            isOpen ? css.active : ""
+          }`}
+        >
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={handleLinkClick}
+              className={
+                activeSection === item.id
+                  ? css.activeLink
+                  : ""
+              }
+>
+  {item.label}
+</a>
+          ))}
+        </nav>
+
+        <button
+          className={`${css.hamburger} ${
+            isOpen ? css.open : ""
+          }`}
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label={
+            isOpen ? "Menüyü kapat" : "Menüyü aç"
+          }
+          aria-expanded={isOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </header>
+    </>
   );
 }
 

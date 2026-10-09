@@ -2,8 +2,8 @@ import css from './OurJobs.module.css';
 
 function OurJobs() {
   return (
-    <section id="our-jobs" className={css.ourJobs}>
-      <h2>Bizim İşlerimiz</h2>
+    <section id="ourjobs" className={css.ourJobs}>
+      <h2>İş Birliklerimiz</h2>
     </section>
   );
 }

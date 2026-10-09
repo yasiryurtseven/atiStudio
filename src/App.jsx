@@ -16,9 +16,9 @@ function App() {
       {/* Ana Sayfa Akış Bölümleri */}
       <main className={css.mainContent}>
         <Hero />
-        <About />
-        <Skills />
         <OurJobs />
+        <Skills />
+        <About />
         <ContactMe />
       </main>
 

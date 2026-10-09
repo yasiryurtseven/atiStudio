@@ -1,11 +1,7 @@
-import css from './About.module.css';
+import ScrollAperture from "../ScrollAperture/ScrollAperture";
 
 function About() {
-  return (
-    <section id="about" className={css.about}>
-      <h2>Hakkımda</h2>
-    </section>
-  );
+  return <ScrollAperture />;
 }
 
-export default About; // <--- İşte bu satır kritik!
+export default About;
