@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import css from "./Navbar.module.css";
-import Logo from "../../assets/Varlık 2-96.svg";
+import Logo from "../../assets/atiSiyah.svg";
 
 const navItems = [
   { id: "ourjobs", label: "İş Birliklerimiz" },

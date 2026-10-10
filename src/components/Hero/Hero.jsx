@@ -1,6 +1,5 @@
 import css from "./Hero.module.css";
 import LightRays from "../LigthRays/LightRays";
-import Logo from "../../assets/Varlık 2-96.svg";
 
 function Hero() {
   return (
@@ -28,11 +27,15 @@ function Hero() {
       </div>
 
       <div className={css.heroContent}>
-      <img src={Logo} alt="Logo" className={css.logo} />
-
-        
+        <video 
+          src="/videos/atiStudio.webm" 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          className={css.logo} 
+        />
       </div>
-
     </section>
   );
 }
