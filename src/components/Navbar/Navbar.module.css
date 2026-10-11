@@ -1,8 +1,3 @@
-
-/* =========================
-   NAVBAR
-========================= */
-
 .navbar {
   position: fixed;
   top: 1.5rem;
@@ -28,10 +23,6 @@
 }
 
 
-/* =========================
-   LOGO
-========================= */
-
 .logo {
   width: 90px;
   height: auto;
@@ -42,12 +33,6 @@
   opacity: 0.85;
   transform: translateY(-1px);
 }
-
-
-/* =========================
-   NAVIGATION LINKS
-   Masaüstü + Tablet
-========================= */
 
 .navLinks {
   list-style: none;
@@ -60,11 +45,6 @@
 
   align-items: center;
 }
-
-
-/* =========================
-   NAVIGATION BUTTONS
-========================= */
 
 .navLinks a {
   position: relative;
@@ -93,58 +73,29 @@
 }
 
 
-/* =========================
-   NAVIGATION HOVER
-========================= */
-
 .navLinks a:hover {
-  background-color: #d8d8d8;
-
+  background-color: #f1eee9;
   color: #ff0000;
-
-  border-color: #d8d8d8;
-
-  transform: translateY(-3px) scale(1.03);
-
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.35),
-    0 0 12px rgba(255, 0, 0, 0.15);
+  transform: translateY(-3px) scale(1.03); 
 }
 
 
-/* =========================
-   AKTİF LINK
-   Hover görünümünün aynısı
-========================= */
 
 .activeLink {
-  background-color: #d8d8d8 !important;
+  background-color: #f1eee9 !important;
 
   color: #ff0000 !important;
 
-  border-color: #d8d8d8 !important;
+  border-color: #d8d8d8 !important ;
 
   transform: translateY(-3px) scale(1.03);
 
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.35),
-    0 0 12px rgba(255, 0, 0, 0.15);
 }
-
-
-/* =========================
-   MOBİL MENÜ DIŞI OVERLAY
-========================= */
 
 .menuOverlay {
   display: none;
 }
 
-
-/* =========================
-   HAMBURGER
-   Masaüstü / Tablet gizli
-========================= */
 
 .hamburger {
   display: none;
@@ -169,7 +120,7 @@
   width: 100%;
   height: 2px;
 
-  background-color: #fff;
+  background-color: #242424;
 
   border-radius: 2px;
 
@@ -177,26 +128,24 @@
 }
 
 
-/* =========================================================
-   MOBİL
-   640px ve altı
-========================================================= */
+@media screen and (max-width: 768px) {
+    
+}
 
-@media screen and (max-width: 640px) {
 
-  /* =========================
-     NAVBAR
-  ========================= */
+/* MOBİL 640px ve altı */
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
 
   .navbar {
     padding: 1rem 1.5rem;
   }
 
-
-  /* =========================
-     MOBİL MENÜ DIŞI OVERLAY
-  ========================= */
-
+  .logo {
+  width: 55px;
+  height: auto;
+  z-index: 1001;
+}
   .menuOverlay {
     display: block;
 
@@ -213,20 +162,9 @@
     z-index: 999;
   }
 
-
-  /* =========================
-     HAMBURGER
-  ========================= */
-
   .hamburger {
     display: flex;
   }
-
-
-  /* =========================
-     MOBİL MENÜ
-     Orijinal yapı korunuyor
-  ========================= */
 
   .navLinks {
     position: fixed;
@@ -243,7 +181,7 @@
 
     gap: 1rem;
 
-    background-color: #0c0c0c;
+    background-color: #d8d8d8;
 
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -270,41 +208,22 @@
   }
 
 
-  /* =========================
-     MOBİL MENÜ AÇIK
-  ========================= */
-
   .navLinks.active {
     transform: scale(1);
-
     opacity: 1;
     visibility: visible;
   }
 
-
-  /* =========================
-     MOBİL BUTONLAR
-  ========================= */
-
   .navLinks a {
     font-size: 1.05rem;
-
     background-color: #242424;
-
     color: #d8d8d8;
-
     border: 1px solid transparent;
-
     padding: 0.6rem 1rem;
-
     border-radius: 10px;
-
     width: 100%;
-
     text-align: center;
-
     text-decoration: none;
-
     transition:
       transform 0.25s ease,
       background-color 0.25s ease,
@@ -314,9 +233,6 @@
   }
 
 
-  /* =========================
-     MOBİL HOVER
-  ========================= */
 
   .navLinks a:hover {
     background-color: #d8d8d8;
@@ -331,12 +247,6 @@
       0 6px 15px rgba(0, 0, 0, 0.35),
       0 0 10px rgba(255, 0, 0, 0.15);
   }
-
-
-  /* =========================
-     MOBİL AKTİF LINK
-     Hover görünümünün aynısı
-  ========================= */
 
   .navLinks a.activeLink {
     background-color: #d8d8d8;
@@ -353,9 +263,7 @@
   }
 
 
-  /* =========================
-     HAMBURGER -> X
-  ========================= */
+  /*  HAMBURGER -> X */
 
   .hamburger.open span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);

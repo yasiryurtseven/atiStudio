@@ -31,7 +31,7 @@ function Hero() {
           src="/videos/atiStudio.webm" 
           autoPlay 
           muted 
-          loop 
+          // loop 
           playsInline 
           className={css.logo} 
         />

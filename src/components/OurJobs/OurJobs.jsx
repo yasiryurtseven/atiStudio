@@ -13,9 +13,9 @@ function OurJobs() {
   const items = [
     { src: miamoreLogo, alt: 'MiaMore' },
     { src: sıkılmısLogo, alt: 'Sıkılmış'},
-    { src: bulutLogo, alt: 'Bulut' },
+    { src: bulutLogo, alt: 'Bulut'},
     { src: arapLogo, alt: 'Arap' },
-     { src: miamoreLogo, alt: 'MiaMore' },
+    { src: miamoreLogo, alt: 'MiaMore' },
     { src: sıkılmısLogo, alt: 'Sıkılmış'},
     { src: bulutLogo, alt: 'Bulut' },
     { src: arapLogo, alt: 'Arap' },
@@ -57,33 +57,33 @@ function OurJobs() {
       
       {/* SOL TARAF: Dönen Logonun Olduğu Karusel */}
       <div className={css.carouselContainer}>
-  <CircularCarousel
-    items={items}
-    preset="cylinder"
-    intro="rise"
-    cardWidth={220}
-    aspectRatio={1}
-    speed={14}
-    captions={false}
-    gap={25}
-    tilt={-5}
-    curve={1}
-    perspective={2500}
-    autoplay="drift"
-    interval={3}
-    direction="left"
-    momentum={0.6}
-    snap
-    pauseOnHover
-    focusOnClick
-    draggable
-    parallax={0.3}
-    stretch={0.5}
-    fadeColor="#d8d8d8"
-    depthFade={0.55}
-    innerShade={0.6}
-    cornerRadius={12}
-/>
+      <CircularCarousel
+        items={items}
+        preset="cylinder"
+        intro="rise"
+        cardWidth={220}
+        aspectRatio={1}
+        speed={14}
+        captions={false}
+        gap={25}
+        tilt={-5}
+        curve={1}
+        perspective={2500}
+        autoplay="drift"
+        interval={3}
+        direction="left"
+        momentum={0.6}
+        snap
+        pauseOnHover
+        focusOnClick
+        draggable
+        parallax={0.3}
+        stretch={0.5}
+        fadeColor="#d8d8d8"
+        depthFade={0.55}
+        innerShade={0.6}
+        cornerRadius={12}
+    />
 </div>
 
       {/* SAĞ TARAF: Otomatik Oynayan Dikey Müşteri Videoları */}
