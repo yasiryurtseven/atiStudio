@@ -5,7 +5,7 @@ import Logo from "../../assets/atiSiyah.svg";
 
 const navItems = [
   { id: "ourjobs", label: "İş Birliklerimiz" },
-  { id: "skills", label: "Ne İstersiniz?" },
+  { id: "skills", label: "Hizmetlerimiz" },
   { id: "about", label: "Biz Kimiz?" },
   { id: "contact", label: "İletişim" },
 ];
