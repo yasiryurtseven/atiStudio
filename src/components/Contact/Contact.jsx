@@ -1,0 +1,255 @@
+import { useState, useRef, useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import emailjs from 'emailjs-com';
+import css from './Contact.module.css';
+import ShinyText from '../ShinyText/ShinyText';
+
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID; 
+const STUDIO_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_STUDIO_TEMPLATE_ID;
+const CLIENT_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CLIENT_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+const schema = yup.object({
+  fullName: yup.string().required('İsim ve soyisim alanı zorunludur.'),
+  email: yup.string().email('Geçerli bir e-posta adresi giriniz.').required('E-posta adresi zorunludur.'),
+  phone: yup
+    .string()
+    .matches(/^[0-9+\s()-]+$/, 'Geçerli bir telefon numarası giriniz.')
+    .required('Telefon numarası zorunludur.'),
+  service: yup.string().required('Lütfen bir hizmet seçiniz.'),
+  message: yup.string().min(10, 'Mesajınız en az 10 karakter olmalıdır.').required('Mesaj alanı zorunludur.'),
+}).required();
+
+const servicesList = [
+  "Creative Design",
+  "Film & Production",
+  "Photography",
+  "Digital Media",
+  "Yazılım"
+];
+
+function Contact() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      fullName: '',
+      email: '',
+      phone: '',
+      service: '',
+      message: ''
+    }
+  });
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const onSubmit = (data) => {
+    console.log('Form Verileri:', data);
+
+    // 1. Stüdyoya gidecek bildirim parametreleri
+    const templateParamsStudio = {
+      from_name: data.fullName,
+      phone: data.phone,
+      email: data.email, // Müşterinin mail adresi
+      service: data.service,
+      message: data.message,
+    };
+
+    // 2. Müşteriye gidecek otomatik cevap parametreleri
+    const templateParamsClient = {
+      from_name: data.fullName,
+      email: data.email, 
+      service: data.service,
+    };
+
+    // Önce Stüdyoya mail gönder, ardından müşteriye onay maili gönder
+    emailjs.send(SERVICE_ID, STUDIO_TEMPLATE_ID, templateParamsStudio, PUBLIC_KEY)
+      .then(() => {
+        return emailjs.send(SERVICE_ID, CLIENT_TEMPLATE_ID, templateParamsClient, PUBLIC_KEY);
+      })
+      .then(() => {
+        setIsSuccess(true);
+        reset();
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 5000);
+      })
+      .catch((err) => {
+        console.error('Mail gönderim hatası:', err);
+        alert('Mesaj gönderilirken bir hata oluştu, lütfen tekrar deneyin.');
+      });
+  };
+
+  return (
+    <section id="contact" className={css.contactSection}>
+      <div className={css.container}>
+        {/* Sol Taraf: Başlık ve Metin */}
+        <div className={css.leftInfo}>
+          <h2 className={css.title}> 
+            <ShinyText
+              text="İletişim"
+              color="#0c0c0c"
+              shineColor="#ff0000"
+              speed={2}
+              shineWidth={800}
+              softness={1.5}
+              trigger="loop"
+              delay={0}
+              angle={120}
+              bands={1}
+              glow={0}
+              direction="right"
+              easing="smooth"
+              yoyo={false}
+              followPointer={false}
+              pauseOnHover={false}
+              disabled={false}
+            />
+          </h2>
+          <p className={css.description}>
+            Projelerinizi hayata geçirmek, markanıza değer katmak veya sorularınızı yanıtlamak için buradayız. <br /> Formu doldurun, ekibimiz en kısa sürede sizinle iletişime geçsin.
+          </p>
+        </div>
+
+        {/* Sağ Taraf: İletişim Formu */}
+        <div className={css.rightForm}>
+          <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+            <div className={css.inputGroup}>
+              <Controller
+                name="fullName"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    placeholder="İsim Soyisim"
+                    {...field}
+                    className={errors.fullName ? css.errorInput : ''}
+                  />
+                )}
+              />
+              {errors.fullName && <span className={css.errorText}>{errors.fullName.message}</span>}
+            </div>
+
+            {/* Yeni Eklenen E-posta Alanı */}
+            <div className={css.inputGroup}>
+              <Controller
+                name="email"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="email"
+                    placeholder="E-posta Adresiniz"
+                    {...field}
+                    className={errors.email ? css.errorInput : ''}
+                  />
+                )}
+              />
+              {errors.email && <span className={css.errorText}>{errors.email.message}</span>}
+            </div>
+
+            <div className={css.inputGroup}>
+              <Controller
+                name="phone"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="tel"
+                    placeholder="Telefon Numarası"
+                    {...field}
+                    className={errors.phone ? css.errorInput : ''}
+                  />
+                )}
+              />
+              {errors.phone && <span className={css.errorText}>{errors.phone.message}</span>}
+            </div>
+
+            {/* Özel Tasarımlı Açılır Menü (Dropdown) ve Kayıt Işığı Noktası */}
+            <div className={css.inputGroup} ref={dropdownRef}>
+              <Controller
+                name="service"
+                control={control}
+                render={({ field }) => (
+                  <div className={css.customSelectWrapper}>
+                    <div 
+                      className={`${css.customSelectTrigger} ${isOpen ? css.activeDropdownTrigger : ''} ${errors.service ? css.errorInput : ''} ${field.value ? css.selectedText : ''}`}
+                      onClick={() => setIsOpen(!isOpen)}
+                    >
+                      <span>{field.value || "İlgilendiğiniz Hizmet"}</span>
+                      <span className={`${css.redDot} ${isOpen ? css.dotActive : ''}`}></span>
+                    </div>
+
+                    {isOpen && (
+                      <div className={css.customDropdownMenu}>
+                        {servicesList.map((item, index) => (
+                          <div
+                            key={index}
+                            className={`${css.dropdownItem} ${field.value === item ? css.activeItem : ''}`}
+                            onClick={() => {
+                              field.onChange(item);
+                              setIsOpen(false);
+                            }}
+                          >
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              />
+              {errors.service && <span className={css.errorText}>{errors.service.message}</span>}
+            </div>
+
+            <div className={css.inputGroup}>
+              <Controller
+                name="message"
+                control={control}
+                render={({ field }) => (
+                  <textarea
+                    placeholder="Projeniz veya talebiniz hakkında kısa bilgi verin..."
+                    rows="4"
+                    {...field}
+                    className={errors.message ? css.errorInput : ''}
+                  ></textarea>
+                )}
+              />
+              {errors.message && <span className={css.errorText}>{errors.message.message}</span>}
+            </div>
+
+            <button 
+              type="submit" 
+              disabled={isSubmitting || isSuccess} 
+              className={`${css.submitBtn} ${isSuccess ? css.successBtn : ''}`}
+            >
+              {isSuccess 
+                ? 'Size en kısa zamanda dönüş yapacağız' 
+                : isSubmitting 
+                  ? 'Gönderiliyor...' 
+                  : 'Gönder'}
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Contact;

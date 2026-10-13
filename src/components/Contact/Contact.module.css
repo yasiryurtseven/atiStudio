@@ -1,0 +1,255 @@
+.contactSection {
+    width: 100%;
+    min-height: 80vh;
+    background-color: #0c0c0c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    color: #d8d8d8;
+}
+
+.container {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.leftInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+.description {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    opacity: 0.7;
+    max-width: 450px;
+}
+
+.rightForm {
+    flex: 1;
+    background-color: #161616;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #222222;
+    border: 1px solid #333333;
+    border-radius: 10px;
+    color: #d8d8d8;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form input:focus,
+.form textarea:focus {
+    border-color: #ff0000;
+}
+
+/* --- Özel Dropdown Stilleri --- */
+.customSelectWrapper {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.customSelectTrigger {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #222222;
+    border: 1px solid #333333;
+    border-radius: 10px;
+    color: #888888;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.3s ease;
+}
+
+/* Dropdown açıkken veya tıklandığında border kırmızı olsun */
+.activeDropdownTrigger {
+    border-color: #ff0000 !important;
+}
+
+.selectedText {
+    color: #d8d8d8;
+}
+
+.customSelectTrigger:hover {
+    border-color: #555555;
+}
+
+/* Kayıt Lambası Tarzı Parlayan Kırmızı Nokta (Ok İşareti Yerine) */
+.redDot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0.8;
+}
+
+/* Menü açıldığında / tıklandığında kırmızı noktanın aktifleşip parlaması */
+.dotActive {
+    transform: scale(1.4);
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.9), 0 0 20px rgba(255, 0, 0, 0.6);
+    opacity: 1;
+}
+
+.customDropdownMenu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background-color: #f1eee9;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 99;
+    animation: fadeInMenu 0.25s ease;
+}
+
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdownItem {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #242424;
+    color: #d8d8d8;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.dropdownItem:hover {
+    background-color: #333333;
+    transform: scale(1.02);
+}
+
+.activeItem {
+    background-color: #d8d8d8 !important;
+    color: #ff0000 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.errorInput {
+    border-color: #ff4d4d !important;
+}
+
+.errorText {
+    font-size: 0.75rem;
+    color: #ff4d4d;
+    padding-left: 4px;
+}
+
+/* Gönder Butonu Stilleri */
+.submitBtn {
+    width: 100%;
+    padding: 14px;
+    background-color: #ff0000;
+    color: #d8d8d8;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.2s ease, opacity 0.5s ease;
+}
+
+.submitBtn:hover {
+    background-color: #cc0000;
+    transform: translateY(-2px);
+}
+
+.submitBtn:disabled {
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Başarılı Gönderim Sonrası Yeşil Onay Butonu ve Yumuşak Geçiş */
+.successBtn {
+    background-color: #2e7d32 !important;
+    color: #d8d8d8 !important;
+    font-size: 0.95rem;
+    animation: fadeInText 0.5s ease forwards;
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .leftInfo {
+        text-align: center;
+        align-items: center;
+    }
+
+    .description {
+        text-align: center;
+    }
+
+    .rightForm {
+        width: 100%;
+        padding: 25px;
+    }
+}

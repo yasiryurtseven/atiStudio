@@ -32,25 +32,25 @@ function Skills() {
       <div className={css.cardsContainer}>
         <div className={css.card}>
           <div className={css.iconWrapper}><FaPenNib /></div>
-          <h3>Creative Design</h3>
+          <h3>Görsel Tasarım</h3>
           <p>Grafik tasarım, görsel kimlik ve markaya özgün yaratıcı tasarım çözümleri.</p>
         </div>
 
         <div className={css.card}>
           <div className={css.iconWrapper}><FaFilm /></div>
-          <h3>Film & Production</h3>
+          <h3>Film & Prodüksiyon</h3>
           <p>Video prodüksiyon, sinematik içerikler, kurgu ve görsel hikaye anlatımı.</p>
         </div>
 
         <div className={css.card}>
           <div className={css.iconWrapper}><FaCamera /> </div>
-          <h3>Photography</h3>
+          <h3>Fotoğraf</h3>
           <p>Ürün, marka ve ticari fotoğrafçılık.</p>
         </div>
 
         <div className={css.card}>
           <div className={css.iconWrapper}><MdOutlineOndemandVideo /></div>
-          <h3>Digital Media</h3>
+          <h3>Dijital Medya</h3>
           <p>Sosyal medya yönetimi, dijital içerik üretimi ve marka iletişimi.</p>
         </div>
 
