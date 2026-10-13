@@ -1,4 +1,3 @@
-
 .hero {
   position: relative;
   width: 100%;
@@ -43,8 +42,6 @@
 }
 
 @media (max-width: 768px) {
- 
-
   .raysWrapper {
     inset: 0;
   }
@@ -52,11 +49,11 @@
 
 @media (max-width: 480px) {
   .heroContent {
-    padding: 0 12px;
+    padding: 0 16px;
   }
 
-   .logo {
-    width: 100vh;
-    max-width: 520px;
+  .logo {
+    width: 85vw; /* Mobilde ekran genişliğinin %85'i kadar güvenli bir boyutta tutar */
+    max-width: 380px;
   }
 }
