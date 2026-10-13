@@ -1,4 +1,3 @@
-
 .hero {
   position: relative;
   width: 100%;
@@ -42,23 +41,25 @@
   filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
 }
 
+/* Tablet ve Altı İçin Işıkları Kaldırıyoruz */
 @media (max-width: 768px) {
- .raysWrapper {
+  .raysWrapper {
     display: none;
-    inset: 0;
   }
 }
 
+/* Mobil İçin Hem Işıkları Kaldırıp Hem Logoyu Sabitliyoruz */
 @media (max-width: 480px) {
   .raysWrapper {
     display: none;
-    inset: 0;
   }
+  
   .heroContent {
-    padding: 0 12px;
+    padding: 0 16px;
   }
+  
   .logo {
-    width: 100vh;
-    max-width: 520px;
+    width: 100vw; /* 100vh yerine ekrana tam oturan güvenli oran */
+    max-width: 520px; /* Taşmayı ve kutulaşmayı tamamen engeller */
   }
 }
