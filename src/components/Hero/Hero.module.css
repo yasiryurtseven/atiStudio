@@ -1,3 +1,4 @@
+
 .hero {
   position: relative;
   width: 100%;
@@ -32,38 +33,32 @@
   padding: 0 16px;
 }
 
-/* Videoyu saran kutu - mobilde taşmayı engeller */
-.videoWrapper {
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .logo {
   display: block;
-  width: 100%;
+  width: min(900px, 90vw);
   max-width: 100%;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
-
-  mix-blend-mode: screen;
 }
 
 @media (max-width: 768px) {
-  .raysWrapper {
+ .raysWrapper {
+    display: none;
     inset: 0;
   }
 }
 
 @media (max-width: 480px) {
-  .heroContent {
-    padding: 0 20px;
+  .raysWrapper {
+    display: none;
+    inset: 0;
   }
-
-  .videoWrapper {
-    max-width: 320px; /* Mobilde logonun çok devasa olmasını engeller, tam kararında bırakır */
+  .heroContent {
+    padding: 0 12px;
+  }
+  .logo {
+    width: 100vh;
+    max-width: 520px;
   }
 }
