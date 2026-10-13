@@ -48,6 +48,8 @@
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
+
+  mix-blend-mode: screen;
 }
 
 @media (max-width: 768px) {
