@@ -1,3 +1,4 @@
+
 .hero {
   position: relative;
   width: 100%;
@@ -42,18 +43,22 @@
 }
 
 @media (max-width: 768px) {
-  .raysWrapper {
-    inset: 0; /* display: none kaldırıldı, ışıklar bozulmasın */
+ .raysWrapper {
+    display: none;
+    inset: 0;
   }
 }
 
 @media (max-width: 480px) {
-  .heroContent {
-    padding: 0 16px;
+  .raysWrapper {
+    display: none;
+    inset: 0;
   }
-  
+  .heroContent {
+    padding: 0 12px;
+  }
   .logo {
-    width: 85vw; /* 100vh yerine ekrana sığacak esnek oran verildi */
-    max-width: 320px; /* Mobilde taşmayı ve kutulaşmayı önler */
+    width: 100vh;
+    max-width: 520px;
   }
 }
