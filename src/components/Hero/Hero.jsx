@@ -27,14 +27,16 @@ function Hero() {
       </div>
 
       <div className={css.heroContent}>
-        <video 
-          src="/videos/atiStudio.webm" 
-          autoPlay 
-          muted 
-          // loop 
-          playsInline 
-          className={css.logo} 
-        />
+        {/* Videoyu kontrol altında tutmak için özel bir wrapper ekledik */}
+        <div className={css.videoWrapper}>
+          <video 
+            src="/videos/atiStudio.webm" 
+            autoPlay 
+            muted 
+            playsInline 
+            className={css.logo} 
+          />
+        </div>
       </div>
     </section>
   );

@@ -32,9 +32,18 @@
   padding: 0 16px;
 }
 
+/* Videoyu saran kutu - mobilde taşmayı engeller */
+.videoWrapper {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .logo {
   display: block;
-  width: min(900px, 90vw);
+  width: 100%;
   max-width: 100%;
   height: auto;
   object-fit: contain;
@@ -49,11 +58,10 @@
 
 @media (max-width: 480px) {
   .heroContent {
-    padding: 0 16px;
+    padding: 0 20px;
   }
 
-  .logo {
-    width: 85vw; /* Mobilde ekran genişliğinin %85'i kadar güvenli bir boyutta tutar */
-    max-width: 380px;
+  .videoWrapper {
+    max-width: 320px; /* Mobilde logonun çok devasa olmasını engeller, tam kararında bırakır */
   }
 }
