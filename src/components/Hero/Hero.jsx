@@ -30,7 +30,7 @@ function Hero() {
         {/* Videoyu kontrol altında tutmak için özel bir wrapper ekledik */}
         <div className={css.videoWrapper}>
           <video 
-            src="/videos/atiStudio.webm" 
+            src="/videos/ATI logo prores444 animasyonai_1-vp9-chrome.webm" 
             autoPlay 
             muted 
             playsInline 
