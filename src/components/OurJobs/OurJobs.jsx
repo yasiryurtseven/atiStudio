@@ -32,7 +32,7 @@ function OurJobs() {
   ];
 
   return (
-    <section id="ourjobs" className={css.ourJobs}>
+    <section id="işbirliklerimiz" className={css.ourJobs}>
       <h2 className={css.title}> 
         <ShinyText
           text="İş Birliklerimiz"

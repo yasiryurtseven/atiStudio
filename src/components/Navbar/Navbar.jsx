@@ -4,10 +4,10 @@ import css from "./Navbar.module.css";
 import Logo from "../../assets/atiSiyah.svg";
 
 const navItems = [
-  { id: "ourjobs", label: "İş Birliklerimiz" },
-  { id: "skills", label: "Hizmetlerimiz" },
-  { id: "about", label: "Biz Kimiz?" },
-  { id: "contact", label: "İletişim" },
+  { id: "işbirliklerimiz", label: "İş Birliklerimiz" },
+  { id: "hizmetlerimiz", label: "Hizmetlerimiz" },
+  { id: "bizkimiz?", label: "Biz Kimiz?" },
+  { id: "iletişim", label: "İletişim" },
 ];
 
 function Navbar() {

@@ -6,7 +6,7 @@ import { MdOutlineOndemandVideo } from "react-icons/md";
 
 function Skills() {
   return (
-    <section id="skills" className={css.skills}>
+    <section id="hizmetlerimiz" className={css.skills}>
       <h2 className={css.title}> 
         <ShinyText
           text="Hizmetlerimiz"

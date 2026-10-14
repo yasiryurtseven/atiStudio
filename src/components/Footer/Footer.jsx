@@ -1,4 +1,5 @@
 import css from './Footer.module.css';
+import logo from "../../assets/atiBeyaz.svg"
 
 function Footer() {
   return (
@@ -8,22 +9,19 @@ function Footer() {
         <div className={css.leftBrand}>
           <div className={css.logoWrapper}>
             <img 
-              src="https://i.imgur.com/b3xHKQV.png" 
+              src={logo} 
               alt="AtiStudio Logo" 
               className={css.logo} 
             />
           </div>
           <p className={css.brandText}>
-            Görsel & Dijital Prodüksiyon Stüdyosu. Projelerinizi geleceğe taşıyoruz.
+            Görünenin ötesini tasarlıyoruz.
           </p>
         </div>
 
-        {/* Sağ Taraf: Hızlı Linkler veya Sosyal Medya / Telif */}
+        {/* Sağ Taraf: Telif Hakları */}
         <div className={css.rightContent}>
-          <div className={css.links}>
-            <a href="#contact" className={css.footerLink}>İletişim</a>
-            <a href="#portfolio" className={css.footerLink}>Projeler</a>
-          </div>
+          <div className={css.links}></div>
           <p className={css.copyright}>
             &copy; {new Date().getFullYear()} AtiStudio. Tüm Hakları Saklıdır.
           </p>

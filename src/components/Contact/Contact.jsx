@@ -23,10 +23,10 @@ const schema = yup.object({
 }).required();
 
 const servicesList = [
-  "Creative Design",
-  "Film & Production",
-  "Photography",
-  "Digital Media",
+  "Görsel Tasarım",
+  "Film & Prodüksiyon",
+  "Fotoğraf",
+  "Dijital Medya",
   "Yazılım"
 ];
 
@@ -62,25 +62,20 @@ function Contact() {
   }, []);
 
   const onSubmit = (data) => {
-    console.log('Form Verileri:', data);
-
-    // 1. Stüdyoya gidecek bildirim parametreleri
     const templateParamsStudio = {
       from_name: data.fullName,
       phone: data.phone,
-      email: data.email, // Müşterinin mail adresi
+      email: data.email,
       service: data.service,
       message: data.message,
     };
 
-    // 2. Müşteriye gidecek otomatik cevap parametreleri
     const templateParamsClient = {
       from_name: data.fullName,
       email: data.email, 
       service: data.service,
     };
 
-    // Önce Stüdyoya mail gönder, ardından müşteriye onay maili gönder
     emailjs.send(SERVICE_ID, STUDIO_TEMPLATE_ID, templateParamsStudio, PUBLIC_KEY)
       .then(() => {
         return emailjs.send(SERVICE_ID, CLIENT_TEMPLATE_ID, templateParamsClient, PUBLIC_KEY);
@@ -98,10 +93,15 @@ function Contact() {
       });
   };
 
+  // Instagram yönlendirme fonksiyonu (kendi sayfa linkini buraya yazabilirsin)
+  const handleInstagramClick = () => {
+    window.open("https://www.instagram.com/ati.studio.r/", "_blank");
+  };
+
   return (
-    <section id="contact" className={css.contactSection}>
+    <section id="iletişim" className={css.contactSection}>
       <div className={css.container}>
-        {/* Sol Taraf: Başlık ve Metin */}
+        {/* Sol Taraf: Başlık, Metin ve Masaüstü Instagram Kutusu */}
         <div className={css.leftInfo}>
           <h2 className={css.title}> 
             <ShinyText
@@ -125,11 +125,17 @@ function Contact() {
             />
           </h2>
           <p className={css.description}>
-            Projelerinizi hayata geçirmek, markanıza değer katmak veya sorularınızı yanıtlamak için buradayız. <br /> Formu doldurun, ekibimiz en kısa sürede sizinle iletişime geçsin.
+            Projelerinizi hayata geçirmek, markanıza değer katmak veya sorularınızı yanıtlamak için buradayız.<br/> <br/> Formu doldurun, ekibimiz en kısa sürede sizinle iletişime geçsin.
           </p>
+
+          {/* SADECE MASAÜSTÜNDE SOL TARAFIN SONUNDA GÖRÜNEN KUTU */}
+          <div className={css.desktopInstagram} onClick={handleInstagramClick}>
+            <span>Instagram üzerinden iletişime geçmek isterseniz</span>
+            <span className={css.instaArrow}>→</span>
+          </div>
         </div>
 
-        {/* Sağ Taraf: İletişim Formu */}
+        {/* Sağ Taraf: İletişim Formu ve Tablet/Mobil Instagram Kutusu */}
         <div className={css.rightForm}>
           <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
             <div className={css.inputGroup}>
@@ -139,7 +145,7 @@ function Contact() {
                 render={({ field }) => (
                   <input
                     type="text"
-                    placeholder="İsim Soyisim"
+                    placeholder="İsim ve Soyisminiz"
                     {...field}
                     className={errors.fullName ? css.errorInput : ''}
                   />
@@ -148,7 +154,6 @@ function Contact() {
               {errors.fullName && <span className={css.errorText}>{errors.fullName.message}</span>}
             </div>
 
-            {/* Yeni Eklenen E-posta Alanı */}
             <div className={css.inputGroup}>
               <Controller
                 name="email"
@@ -172,7 +177,7 @@ function Contact() {
                 render={({ field }) => (
                   <input
                     type="tel"
-                    placeholder="Telefon Numarası"
+                    placeholder="Telefon Numaranız"
                     {...field}
                     className={errors.phone ? css.errorInput : ''}
                   />
@@ -181,7 +186,6 @@ function Contact() {
               {errors.phone && <span className={css.errorText}>{errors.phone.message}</span>}
             </div>
 
-            {/* Özel Tasarımlı Açılır Menü (Dropdown) ve Kayıt Işığı Noktası */}
             <div className={css.inputGroup} ref={dropdownRef}>
               <Controller
                 name="service"
@@ -224,7 +228,7 @@ function Contact() {
                 control={control}
                 render={({ field }) => (
                   <textarea
-                    placeholder="Projeniz veya talebiniz hakkında kısa bilgi verin..."
+                    placeholder="Projeniz veya talebiniz hakkında kısa bir bilgi rica ediyoruz..."
                     rows="4"
                     {...field}
                     className={errors.message ? css.errorInput : ''}
@@ -246,6 +250,12 @@ function Contact() {
                   : 'Gönder'}
             </button>
           </form>
+
+          {/* SADECE TABLET VE MOBİLDE FORMUN ALTINDA GÖRÜNEN KUTU */}
+          <div className={css.mobileInstagram} onClick={handleInstagramClick}>
+            <span>Instagram üzerinden iletişime geçin</span>
+            <span className={css.instaArrow}>→</span>
+          </div>
         </div>
       </div>
     </section>

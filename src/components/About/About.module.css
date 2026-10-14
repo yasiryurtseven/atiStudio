@@ -1,25 +1,105 @@
-.about {
+/* Ana kapsayıcı - sabit navbarın altında kusursuz durması için scroll-margin ayarlandı */
+.aboutSection {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 60px auto;
+   padding-top: 40px;
+   scroll-margin-top: 110px; /* Sabit navbarın yüksekliğine göre nokta atışı duruş sağlar */
+}
+
+/* Kutunun dışındaki başlık tasarımı */
+.title {
+   font-size: 2.5rem;
+   margin-bottom: 25px;
+   text-align: center;
+   letter-spacing: -1px;
+}
+
+/* Gri içerik kutusu */
+.aboutBox {
    display: flex;
    align-items: center;
    justify-content: center;
    flex-direction: column;
    background-color: #d8d8d8;
    width: 85%;
+   max-width: 1200px;
    height: auto;
-   margin: 50px auto;
-   padding: 100px;
+   padding: 40px;
    border-radius: 18px;
+   box-sizing: border-box;
 }
-.text{
+
+.text {
     font-size: 1.5rem;
-    opacity: 0.7;
-    line-height: 1.4;
+    opacity: 0.85;
+    line-height: 1.6;
     color: #0c0c0c;
     text-align: start;
+    max-width: 900px;
 }
-.textTitle{
-   font-size: 2.5rem;
-   font-weight: 500;
+
+.textTitle {
+   display: block;
+   font-size: 2.2rem;
+   font-weight: 600;
    letter-spacing: -1px;
-   
+   margin-bottom: 20px;
+   text-align: center;
+}
+
+/* Tablet İçin Düzenleme (768px ve altı) */
+@media (max-width: 768px) {
+  .aboutSection {
+     margin: 40px auto;
+     scroll-margin-top: 100px; /* Tablette navbar yüksekliğine uyumlu */
+  }
+
+  .aboutBox {
+     width: 90%;
+     padding: 30px 20px;
+   }
+
+   .title {
+     font-size: 2rem;
+     margin-bottom: 15px;
+   }
+
+   .textTitle {
+     font-size: 1.6rem;
+   }
+
+   .text {
+     font-size: 1.15rem;
+   }
+}
+
+/* Mobil İçin Düzenleme (480px ve altı) */
+@media (max-width: 480px) {
+  .aboutSection {
+     margin: 30px auto;
+     scroll-margin-top: 90px; /* Mobilde navbar yüksekliğine uyumlu */
+   }
+
+  .aboutBox {
+     width: 95%;
+     padding: 25px 15px;
+     border-radius: 14px;
+   }
+
+   .title {
+     font-size: 1.8rem;
+     margin-bottom: 12px;
+   }
+
+   .textTitle {
+     font-size: 1.3rem;
+     margin-bottom: 12px;
+   }
+
+   .text {
+     font-size: 1rem;
+   }
 }

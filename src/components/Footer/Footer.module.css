@@ -1,26 +1,28 @@
 .footer {
   background-color: #0c0c0c;
   color: #d8d8d8;
-  padding: 40px 0;
-  border-top: 1px solid #1f1f1f;
+  padding: 50px 0;
+  border-top:1px solid #ff0000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Masaüstü ve tablette yan yana kalmasını sağlar */
   gap: 20px;
 }
 
 .leftBrand {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .logoWrapper {
@@ -29,23 +31,24 @@
 }
 
 .logo {
-  max-width: 130px;
+  width: 80px;
   height: auto;
-  display: block;
 }
 
 .brandText {
-  font-size: 13px;
+  font-size: 14px;
   color: #888;
   margin: 0;
   max-width: 300px;
   line-height: 1.5;
+  text-align: left;
 }
 
 .rightContent {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: center;
   gap: 12px;
 }
 
@@ -54,36 +57,62 @@
   gap: 20px;
 }
 
-.footerLink {
-  color: #d8d8d8;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.footerLink:hover {
-  color: #ff0000; /* Stüdyonun kırmızı vurgusu */
-}
-
 .copyright {
-  font-size: 12px;
+  font-size: 13px;
   color: #555;
   margin: 0;
 }
 
-/* Mobilde alt alta şık durması için */
+/* ================= TABLET İÇİN ÖZEL AYAR (769px - 1024px) ================= */
+/* Masaüstü tasarımını bozmadan sadece ölçüleri küçültüyoruz */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .logo {
+    max-width: 130px;
+  }
+
+  .brandText {
+    font-size: 13px;
+    max-width: 250px;
+  }
+
+  .copyright {
+    font-size: 12px;
+  }
+}
+
+/* ================= MOBİL İÇİN ÖZEL AYAR (768px ve altı) ================= */
+/* Sadece mobilde alt alta ve ortalı yapıya geçiyoruz */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 25px;
+    padding: 0 20px;
+  }
+
+  .leftBrand {
+    align-items: center;
+  }
+
+  .logoWrapper {
+    justify-content: center;
+  }
+
+  .logo {
+    max-width: 130px;
+  }
+
+  .brandText {
+    text-align: center;
+    max-width: 100%;
   }
 
   .rightContent {
     align-items: center;
-  }
-
-  .brandText {
-    max-width: 100%;
   }
 }
