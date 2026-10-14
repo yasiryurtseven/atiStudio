@@ -30,12 +30,20 @@ function Hero() {
         {/* Videoyu kontrol altında tutmak için özel bir wrapper ekledik */}
         <div className={css.videoWrapper}>
           <video 
-            src="/videos/ATI logo prores444 animasyonai_1-vp9-chrome.webm" 
-            autoPlay 
-            muted 
-            playsInline 
-            className={css.logo} 
-          />
+  autoPlay 
+  loop 
+  muted 
+  playsInline 
+  className="w-full h-auto"
+>
+  {/* Safari ve Apple cihazlar için */}
+  <source src="/videos/apple-logo.mov" type="video/mp4" />
+  
+  {/* Chrome, Firefox ve diğer tarayıcılar için */}
+  <source src="/videos/atiStudio.webm" type="video/webm" />
+  
+  Tarayıcınız video etiketini desteklemiyor.
+</video>
         </div>
       </div>
     </section>

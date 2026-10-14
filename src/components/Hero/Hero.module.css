@@ -43,16 +43,11 @@
 
 /* Tablet ve Altı İçin Işıkları Kaldırıyoruz */
 @media (max-width: 768px) {
-  .raysWrapper {
-    display: none;
-  }
+  
 }
 
 /* Mobil İçin Hem Işıkları Kaldırıp Hem Logoyu Sabitliyoruz */
 @media (max-width: 480px) {
-  .raysWrapper {
-    display: none;
-  }
   
   .heroContent {
     padding: 0 16px;
