@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import css from './OurJobs.module.css';
 import CircularCarousel from '../CircularCarousel/CircularCarousel';
-import miamoreLogo from '../../assets/miamore.png';
+import miamoreLogo from '../../assets/miamore2.png';
 import sıkılmısLogo from '../../assets/sıkılmıs.png';
-import bulutLogo from '../../assets/bulut.png';
-import arapLogo from '../../assets/arap.png';
+import bulutLogo from '../../assets/bulut2.png';
+import arapLogo from '../../assets/arap2.png';
+import pizzaLogo from '../../assets/pizza.png'
+import deltoidLogo from '../../assets/deltoid.png'
 import ShinyText from '../ShinyText/ShinyText';
 
 function OurJobs() {
@@ -15,10 +17,11 @@ function OurJobs() {
     { src: sıkılmısLogo, alt: 'Sıkılmış'},
     { src: bulutLogo, alt: 'Bulut'},
     { src: arapLogo, alt: 'Arap' },
-    { src: miamoreLogo, alt: 'MiaMore' },
-    { src: sıkılmısLogo, alt: 'Sıkılmış'},
-    { src: bulutLogo, alt: 'Bulut' },
-    { src: arapLogo, alt: 'Arap' },
+    { src: pizzaLogo, alt: 'Nostalji Pizza' },
+    { src: deltoidLogo, alt: 'Deltoid'},
+
+    // { src: bulutLogo, alt: 'Bulut' },
+    // { src: arapLogo, alt: 'Arap' },
     
   ];
 

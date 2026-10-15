@@ -11,6 +11,27 @@
   background: #05070c;
 }
 
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 200px;
+  z-index: 5;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(12, 12, 12, 0.25) 30%,
+    rgba(12, 12, 12, 0.75) 70%,
+    #0c0c0c 100%
+  );
+}
+
+
+
 .raysWrapper {
   position: absolute;
   inset: 0;
@@ -47,14 +68,13 @@
 }
 
 @media (max-width: 480px) {
-  
   .heroContent {
-    padding: 0 16px;
+    padding: 0 12px;
   }
   
   .logoWrapper {
-    width: 100vw; /* 100vh yerine ekrana tam oturan gÃ¼venli oran */
-    max-width: 520px; /* TaÅŸmayÄ± ve kutulaÅŸmayÄ± tamamen engeller */
+    width: 100vw; /* Mobilde ekranın genişliğini daha fazla kaplamasını sağlar */
+    max-width: 420px; /* Telefon ekranlarında ideal büyük boyutta durur (istedikçe bu değeri 450px veya 500px yapabilirsin) */
   }
 }
 

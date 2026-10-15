@@ -6,7 +6,7 @@
   position: sticky; top: 0; height: 100vh; height: 100svh;
   isolation: isolate; overflow: hidden; background: #0c0c0c;
 }
-.stageLabel { position: absolute; top: 125px; left: 6%; right: 6%; display: flex; justify-content: space-between; z-index: 4; font-size: 10px; letter-spacing: .18em; color: #c4c1bc; }
+.stageLabel { position: absolute; top: 125px;  display: flex; justify-content: center; z-index: 4; font-size: 10px; letter-spacing: .18em; color: #c4c1bc; }
 /* Blend the lens into the preceding section without blurring the whole scene. */
 .stage::after {
   content: '';
@@ -25,7 +25,7 @@
 }
 .headline { position: absolute; inset: 0; display: grid; place-items: center; z-index: 2; pointer-events: none; }
 .headline h2 { margin: 0; font-size: clamp(42px, 6vw, 88px); line-height: 1.03; font-weight: 500; letter-spacing: -.065em; text-align: center; transform: scale(var(--title-scale)); opacity: var(--title-opacity); filter: blur(var(--title-blur)); will-change: transform, opacity; }
-.headline h2 span { color: #ff3434; }
+.headline h2 span { color: #ff0000; }
 .iris { position: absolute; inset: 0; display: grid; place-items: center; z-index: 3; pointer-events: none; visibility: var(--iris-visibility); contain: paint; }
 .iris svg { width: max(100vw, 100vh); width: max(100vw, 100svh); height: max(100vw, 100vh); height: max(100vw, 100svh); overflow: hidden; flex-shrink: 0; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
 .scrollHint { position: absolute; z-index: 4; bottom: 8%; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 12px; color: #cfccc7; font-size: 10px; letter-spacing: .16em; opacity: var(--hint-opacity); }
@@ -33,24 +33,22 @@
 .redDot { width: 6px; height: 6px; background: #ff3434; border-radius: 50%; }
 .progressBar { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #ff3434; z-index: 4; transform: scaleX(var(--progress)); transform-origin: left; }
 .story { position: absolute; top: 50%; left: 50%; width: min(920px, 86%); opacity: var(--story-opacity); transform: translate(-50%, calc(-50% + var(--story-shift))); }
-.eyebrow { display: block; color: #ff6868; font-size: 10px; letter-spacing: .16em; margin-bottom: 24px; }
+.eyebrow { display: block; color: #ff0000; font-size: 10px; letter-spacing: .16em; margin-bottom: 24px; }
 .story .lead { color: #f1efeb; font-size: clamp(25px, 3.4vw, 46px); line-height: 1.25; letter-spacing: -.045em; margin: 0 0 30px; }
 .storyColumns { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.storyColumns p { margin: 0; color: #b9b5af; font-size: 15px; line-height: 1.8; }
+.storyColumns p { margin: 0; color: #b9b5af; font-size: 17px; line-height: 1.8; }
 .details { width: min(1200px, calc(100% - 64px)); margin: 0 auto; padding: 32px 0 0; }
 .approachHeader { display: flex; justify-content: space-between; gap: 16px; padding: 21px 0; color: #aaa6a2; font-size: 11px; line-height: 1.5; }
 .approachHeader > span:first-child { letter-spacing: .12em; }
-.approach { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; border: 1px solid #343434; }
-.step { padding: 29px 28px 32px; background: #111; transition: background-color 180ms ease; }
-.step + .step { border-left: 1px solid #343434; }
+.approach { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0;  border-radius: 18px; gap: 8px; }
+.step { padding: 29px 28px 32px; background: #111; border-radius: 18px; transition: background-color 180ms ease; }
+
 .step:hover { background: #1c1414; }
-.number { color: #ff6868; font-size: 12px; font-variant-numeric: tabular-nums; }
+.number { color: #ff0000; font-size: 12px; font-variant-numeric: tabular-nums; }
 .step h3 { font-family: 'Space Grotesk', sans-serif; margin: 32px 0 14px; font-size: clamp(21px, 2.2vw, 28px); font-weight: 500; letter-spacing: -.04em; }
-.step p { margin: 0; color: #aaa6a2; font-size: 13px; line-height: 1.8; }
-.contactLink { display: inline-flex; align-items: center; gap: 26px; min-height: 44px; margin-top: 28px; padding: 5px 0; border-bottom: 1px solid #ff3434; color: #f1efeb; text-decoration: none; font-size: 14px; }
-.contactLink span { color: #ff3434; font-size: 23px; }
-.contactLink:hover { color: #ff6868; }
-.contactLink:focus-visible { outline: 2px solid #ff6868; outline-offset: 6px; }
+.step p { margin: 0; color: #aaa6a2; font-size: 14px; line-height: 1.8; }
+.contactLink { display: inline-flex; align-items: center; gap: 26px; min-height: 44px; margin-top: 28px; padding: 5px 0; border-bottom: 1px solid #ff0000; color: #f1efeb; text-decoration: none; font-size: 14px; }
+
 @media (max-width: 800px) {
   .stageLabel { top: 110px; }
   .storyColumns { gap: 18px; grid-template-columns: 1fr; }

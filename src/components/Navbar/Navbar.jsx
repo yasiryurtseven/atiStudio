@@ -15,43 +15,47 @@ function Navbar() {
   const [activeSection, setActiveSection] = useState("hero");
 
  useEffect(() => {
-  const sectionIds = ["hero", ...navItems.map((item) => item.id)];
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.2; // Ekranın %30 üst kısımdaki referans çizgisi
+      
+      const sectionIds = ["hero", ...navItems.map((item) => item.id)];
+      let currentSection = "hero";
 
-  const sections = sectionIds
-    .map((id) => document.getElementById(id))
-    .filter(Boolean);
+      for (const id of sectionIds) {
+        // İsimdeki olası boşlukları temizleyerek ID'yi bulalım
+        const cleanId = id.trim();
+        const element = document.getElementById(cleanId);
+        
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+          const elementBottom = elementTop + element.offsetHeight;
 
-  const observer = new IntersectionObserver(
-  (entries) => {
-    const visibleSections = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort(
-        (a, b) => b.intersectionRatio - a.intersectionRatio
-      );
-
-    if (visibleSections.length > 0) {
-      const sectionId = visibleSections[0].target.id;
-
-      setActiveSection(sectionId);
-
-      if (sectionId === "hero") {
-        window.history.replaceState(null, "", window.location.pathname);
-      } else if (window.location.hash !== `#${sectionId}`) {
-        window.history.replaceState(null, "", `#${sectionId}`);
+          // Eğer kaydırma pozisyonumuz bu section'ın sınırları içindeyse
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            currentSection = cleanId;
+            break;
+          }
+        }
       }
-    }
-  },
-  {
-    root: null,
-    rootMargin: "-20% 0px -60% 0px",
-    threshold: [0.1, 0.25, 0.5],
-  }
-);
 
-  sections.forEach((section) => observer.observe(section));
+      setActiveSection(currentSection);
 
-  return () => observer.disconnect();
-}, []);
+      // URL hash güncellemesi
+      if (currentSection === "hero") {
+        if (window.location.hash) {
+          window.history.replaceState(null, "", window.location.pathname);
+        }
+      } else if (window.location.hash !== `#${currentSection}`) {
+        window.history.replaceState(null, "", `#${currentSection}`);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // İlk açılışta tetikle
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
  const handleLinkClick = () => {
   setIsOpen(false);

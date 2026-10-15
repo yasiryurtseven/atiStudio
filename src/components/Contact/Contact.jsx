@@ -7,8 +7,8 @@ import css from './Contact.module.css';
 import ShinyText from '../ShinyText/ShinyText';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID; 
-const STUDIO_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_STUDIO_TEMPLATE_ID;
-const CLIENT_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CLIENT_TEMPLATE_ID;
+const STUDIO_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_STUDIO_TEMPLATE_ID; 
+const CLIENT_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CLIENT_TEMPLATE_ID; 
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const schema = yup.object({
@@ -32,6 +32,7 @@ const servicesList = [
 
 function Contact() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false); // Manuel yüklenme state'i ekledik
   const [isSuccess, setIsSuccess] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -39,7 +40,7 @@ function Contact() {
     control,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -62,10 +63,12 @@ function Contact() {
   }, []);
 
   const onSubmit = (data) => {
+    setIsSending(true); // Gönderim başladığı an kilitle ve spinner'ı aç
+
     const templateParamsStudio = {
       from_name: data.fullName,
-      phone: data.phone,
       email: data.email,
+      phone: data.phone,
       service: data.service,
       message: data.message,
     };
@@ -81,19 +84,20 @@ function Contact() {
         return emailjs.send(SERVICE_ID, CLIENT_TEMPLATE_ID, templateParamsClient, PUBLIC_KEY);
       })
       .then(() => {
-        setIsSuccess(true);
+        setIsSending(false); // Yüklenme bitti
+        setIsSuccess(true);  // Başarılı yeşil metne dön
         reset();
         setTimeout(() => {
-          setIsSuccess(false);
+          setIsSuccess(false); // 5 saniye sonra normale döndür
         }, 5000);
       })
       .catch((err) => {
         console.error('Mail gönderim hatası:', err);
         alert('Mesaj gönderilirken bir hata oluştu, lütfen tekrar deneyin.');
+        setIsSending(false); // Hata olursa da kilidi kaldır
       });
   };
 
-  // Instagram yönlendirme fonksiyonu (kendi sayfa linkini buraya yazabilirsin)
   const handleInstagramClick = () => {
     window.open("https://www.instagram.com/ati.studio.r/", "_blank");
   };
@@ -101,7 +105,6 @@ function Contact() {
   return (
     <section id="iletişim" className={css.contactSection}>
       <div className={css.container}>
-        {/* Sol Taraf: Başlık, Metin ve Masaüstü Instagram Kutusu */}
         <div className={css.leftInfo}>
           <h2 className={css.title}> 
             <ShinyText
@@ -128,14 +131,12 @@ function Contact() {
             Projelerinizi hayata geçirmek, markanıza değer katmak veya sorularınızı yanıtlamak için buradayız.<br/> <br/> Formu doldurun, ekibimiz en kısa sürede sizinle iletişime geçsin.
           </p>
 
-          {/* SADECE MASAÜSTÜNDE SOL TARAFIN SONUNDA GÖRÜNEN KUTU */}
           <div className={css.desktopInstagram} onClick={handleInstagramClick}>
             <span>Instagram üzerinden iletişime geçmek isterseniz</span>
             <span className={css.instaArrow}>→</span>
           </div>
         </div>
 
-        {/* Sağ Taraf: İletişim Formu ve Tablet/Mobil Instagram Kutusu */}
         <div className={css.rightForm}>
           <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
             <div className={css.inputGroup}>
@@ -240,18 +241,21 @@ function Contact() {
 
             <button 
               type="submit" 
-              disabled={isSubmitting || isSuccess} 
+              disabled={isSending || isSuccess} 
               className={`${css.submitBtn} ${isSuccess ? css.successBtn : ''}`}
             >
-              {isSuccess 
-                ? 'Size en kısa zamanda dönüş yapacağız' 
-                : isSubmitting 
-                  ? 'Gönderiliyor...' 
-                  : 'Gönder'}
+              {isSending ? (
+                <span className={css.spinnerContainer}>
+                  <span className={css.spinner}></span> Gönderiliyor...
+                </span>
+              ) : isSuccess ? (
+                'Size en kısa zamanda dönüş yapacağız'
+              ) : (
+                'Gönder'
+              )}
             </button>
           </form>
 
-          {/* SADECE TABLET VE MOBİLDE FORMUN ALTINDA GÖRÜNEN KUTU */}
           <div className={css.mobileInstagram} onClick={handleInstagramClick}>
             <span>Instagram üzerinden iletişime geçin</span>
             <span className={css.instaArrow}>→</span>

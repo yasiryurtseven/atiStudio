@@ -1,7 +1,21 @@
+import { useState, useEffect } from "react";
 import css from "./Hero.module.css";
 import LightRays from "../LigthRays/LightRays";
 
 function Hero() {
+  // Animasyonun oynayıp oynamadığını kontrol eden state
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
+  useEffect(() => {
+    // Logonun animasyon süresini buraya milisaniye cinsinden yazabilirsin (Örn: 2000 milisaniye = 2 saniye)
+    // Logon kaç saniyede tamamlanıyorsa o süreyi verebilirsin.
+    const timer = setTimeout(() => {
+      setIsAnimationFinished(true);
+    }, 2150); // 2 saniye sonra sabit görsele geçiş yapar
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section id="hero" className={css.hero}>
       <div className={css.raysWrapper}>
@@ -27,16 +41,15 @@ function Hero() {
       </div>
 
       <div className={css.heroContent}>
-        {/* Image animation preserves alpha without video autoplay/codec limits. */}
         <picture className={css.logoWrapper}>
           <source
             media="(prefers-reduced-motion: reduce)"
             srcSet="/images/ati-studio-hero.png"
             type="image/png"
           />
-          <source srcSet="/images/ati-studio-hero.webp" type="image/webp" />
+          {/* Animasyon bittiyse statik PNG'yi göster, bitmediyse APNG'yi oynat */}
           <img
-            src="/images/ati-studio-hero.apng"
+            src={isAnimationFinished ? "/images/ati-studio-hero.png" : "/images/ati-studio-hero.apng"}
             alt="ATI Studio"
             width="1200"
             height="675"

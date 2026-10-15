@@ -1,118 +1,169 @@
 .footer {
-  background-color: #0c0c0c;
+  position: relative;
+  background: #0c0c0c;
   color: #d8d8d8;
-  padding: 50px 0;
-  border-top:1px solid #ff0000;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 1px solid rgba(255, 0, 0, 0.65);
+  font-family: 'Inter', sans-serif;
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap; /* Masaüstü ve tablette yan yana kalmasını sağlar */
-  gap: 20px;
+  padding: 40px 30px 20px;
 }
 
-.leftBrand {
+.brand {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.logoWrapper {
-  display: flex;
-  align-items: center;
+  gap: 12px;
+  text-align: center;
 }
 
 .logo {
-  width: 80px;
+  display: block;
+  width: 90px;
   height: auto;
 }
 
 .brandText {
-  font-size: 14px;
-  color: #888;
   margin: 0;
-  max-width: 300px;
-  line-height: 1.5;
-  text-align: left;
+  color: #858585;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
 }
 
-.rightContent {
+.bottom {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   justify-content: center;
-  gap: 12px;
-}
-
-.links {
-  display: flex;
-  gap: 20px;
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid #252525;
 }
 
 .copyright {
-  font-size: 13px;
-  color: #555;
   margin: 0;
+  color: #626262;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: center;
 }
 
-/* ================= TABLET İÇİN ÖZEL AYAR (769px - 1024px) ================= */
-/* Masaüstü tasarımını bozmadan sadece ölçüleri küçültüyoruz */
+/* Tablet */
+
 @media (min-width: 769px) and (max-width: 1024px) {
   .container {
-    padding: 0 20px;
+    padding: 36px 24px 20px;
   }
-  
+}
+
+/* Mobil */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 32px 20px 18px;
+  }
+
   .logo {
-    max-width: 130px;
+    width: 82px;
   }
 
   .brandText {
-    font-size: 13px;
-    max-width: 250px;
+    font-size: 12px;
+  }
+
+  .bottom {
+    margin-top: 24px;
+    padding-top: 16px;
   }
 
   .copyright {
-    font-size: 12px;
+    font-size: 10px;
+  }
+}.footer {
+  position: relative;
+  background: #0c0c0c;
+  color: #d8d8d8;
+  border-top: 1px solid rgba(255, 0, 0, 0.65);
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 30px 20px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.logo {
+  display: block;
+  width: 90px;
+  height: auto;
+}
+
+.brandText {
+  margin: 0;
+  color: #858585;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid #252525;
+}
+
+.copyright {
+  margin: 0;
+  color: #626262;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Tablet */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 36px 24px 20px;
   }
 }
 
-/* ================= MOBİL İÇİN ÖZEL AYAR (768px ve altı) ================= */
-/* Sadece mobilde alt alta ve ortalı yapıya geçiyoruz */
+/* Mobil */
+
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 25px;
-    padding: 0 20px;
-  }
-
-  .leftBrand {
-    align-items: center;
-  }
-
-  .logoWrapper {
-    justify-content: center;
+    padding: 32px 20px 18px;
   }
 
   .logo {
-    max-width: 130px;
+    width: 82px;
   }
 
   .brandText {
-    text-align: center;
-    max-width: 100%;
+    font-size: 12px;
   }
 
-  .rightContent {
-    align-items: center;
+  .bottom {
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+
+  .copyright {
+    font-size: 10px;
   }
 }

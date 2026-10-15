@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef } from 'react';
+import ShinyText from '../ShinyText/ShinyText';
 import css from './About.module.css';
 
 const approach = [
@@ -97,8 +98,29 @@ function About() {
     <section id="bizkimiz?" className={css.aboutSection} aria-labelledby="about-title">
       <div className={css.scrollTrack} ref={trackRef}>
         <div className={css.stage} ref={stageRef}>
-          <div className={css.stageLabel}><span>ATI STUDIO</span><span>BİZ KİMİZ?</span></div>
+          <div className={css.stageLabel}></div>
           <div className={css.story}>
+            <h2 className={css.title}> 
+            <ShinyText
+              text="Biz Kimiz?"
+              color="#0c0c0c"
+              shineColor="#ff0000"
+              speed={2}
+              shineWidth={800}
+              softness={1.5}
+              trigger="loop"
+              delay={0}
+              angle={120}
+              bands={1}
+              glow={0}
+              direction="right"
+              easing="smooth"
+              yoyo={false}
+              followPointer={false}
+              pauseOnHover={false}
+              disabled={false}
+            />
+          </h2>
             <span className={css.eyebrow}>GÖRÜNENİN ARDINDA, BİR HİKÂYE VAR.</span>
             <p className={css.lead}>Fikirleri güçlü görsel anlatılara dönüştüren bağımsız bir yaratıcı stüdyoyuz.</p>
             <div className={css.storyColumns}>
@@ -168,7 +190,6 @@ function About() {
             <li className={css.step} key={step.title}><span className={css.number} aria-hidden="true">0{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>
           ))}
         </ol>
-        <a className={css.contactLink} href="#iletişim">Hikâyeni birlikte anlatalım <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   );
