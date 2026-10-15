@@ -2,7 +2,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: clip; /* Preserve viewport sticky positioning for the About iris. */
     z-index: 1;
 }
 
