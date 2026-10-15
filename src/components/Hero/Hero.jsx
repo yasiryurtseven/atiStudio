@@ -27,24 +27,23 @@ function Hero() {
       </div>
 
       <div className={css.heroContent}>
-        {/* Videoyu kontrol altında tutmak için özel bir wrapper ekledik */}
-        <div className={css.videoWrapper}>
-          <video 
-  autoPlay 
-  loop 
-  muted 
-  playsInline 
-  className="w-full h-auto"
->
-  {/* Safari ve Apple cihazlar için */}
-  <source src="/videos/apple-logo.mov" type="video/mp4" />
-  
-  {/* Chrome, Firefox ve diğer tarayıcılar için */}
-  <source src="/videos/atiStudio.webm" type="video/webm" />
-  
-  Tarayıcınız video etiketini desteklemiyor.
-</video>
-        </div>
+        {/* Image animation preserves alpha without video autoplay/codec limits. */}
+        <picture className={css.logoWrapper}>
+          <source
+            media="(prefers-reduced-motion: reduce)"
+            srcSet="/images/ati-studio-hero.png"
+            type="image/png"
+          />
+          <source srcSet="/images/ati-studio-hero.webp" type="image/webp" />
+          <img
+            src="/images/ati-studio-hero.apng"
+            alt="ATI Studio"
+            width="1200"
+            height="675"
+            fetchPriority="high"
+            className={css.logo}
+          />
+        </picture>
       </div>
     </section>
   );

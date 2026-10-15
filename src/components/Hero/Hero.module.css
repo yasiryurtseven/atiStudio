@@ -32,29 +32,34 @@
   padding: 0 16px;
 }
 
-.logo {
+.logoWrapper {
   display: block;
   width: min(900px, 90vw);
   max-width: 100%;
+}
+
+.logo {
+  display: block;
+  width: 100%;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
 }
 
-/* Tablet ve Altı İçin Işıkları Kaldırıyoruz */
-@media (max-width: 768px) {
-  
-}
-
-/* Mobil İçin Hem Işıkları Kaldırıp Hem Logoyu Sabitliyoruz */
 @media (max-width: 480px) {
   
   .heroContent {
     padding: 0 16px;
   }
   
-  .logo {
-    width: 100vw; /* 100vh yerine ekrana tam oturan güvenli oran */
-    max-width: 520px; /* Taşmayı ve kutulaşmayı tamamen engeller */
+  .logoWrapper {
+    width: 100vw; /* 100vh yerine ekrana tam oturan gÃ¼venli oran */
+    max-width: 520px; /* TaÅŸmayÄ± ve kutulaÅŸmayÄ± tamamen engeller */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .raysWrapper {
+    display: none;
   }
 }
