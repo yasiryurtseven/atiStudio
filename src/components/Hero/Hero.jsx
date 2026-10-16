@@ -11,7 +11,7 @@ function Hero() {
     // Logon kaç saniyede tamamlanıyorsa o süreyi verebilirsin.
     const timer = setTimeout(() => {
       setIsAnimationFinished(true);
-    }, 2100); // 2 saniye sonra sabit görsele geçiş yapar
+    }, 2150); // 2 saniye sonra sabit görsele geçiş yapar
 
     return () => clearTimeout(timer);
   }, []);
